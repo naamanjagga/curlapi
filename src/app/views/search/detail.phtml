@@ -1,0 +1,50 @@
+<style>
+    .card img {
+        width: 30%;
+    }
+</style>
+<div class="container-fluid bg-primary pt-5 pb-5">
+    <div class="container bg-white mt-5 mb-5 border-rounded">
+        <?php
+        // foreach ($array as $key => $value) {
+        ?>
+        <div class="card mt-3 bg-muted" style="width: 70rem; flex-direction: row;">
+            <img src="<?php echo 'https://covers.openlibrary.org/b/id/' . $img . '-L.jpg'; ?>" class="card-img-top" alt="..." height="250">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <a href="#">
+                            <h5 class="card-title"><?php echo $title; ?></h5>
+                        </a>
+                        <p class="card-text">by : <?php
+                                                    if ($author != null) {
+                                                        foreach ($author as $k => $v) {
+                                                            echo $v;
+                                                            echo ' ,';
+                                                        }
+                                                    }
+                                                    ?> </p>
+                        <p class="card-text text-muted"><small>first published in : <?php echo $publish  ?></small> </p>
+                        <a class="card-text text-primary decoration-none"><small>languages : <?php
+                                                                                                foreach ($language as $l) {
+                                                                                                    echo $l;
+                                                                                                    echo ' , ';
+                                                                                                } ?> edition </small></a>
+                        <p class="card-text mt-2 "><small>places : <?php
+                                                                    foreach ($place as $p) {
+                                                                        echo $p;
+                                                                        echo ' , ';
+                                                                    } ?> edition </small></p>
+                    </div>
+                    <div class="col-lg-4 mt-5">
+                        <a href="#" class="btn btn-primary  mt-3 px-5">Read Now</a><br>
+                        <a href="https://www.google.co.in/books/edition/<?php echo $ti ?>/<?php echo $gi ?>?hl=en" class="btn btn-danger  mt-1 px-5">Read With Google</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        // }
+        ?>
+    </div>
+</div>

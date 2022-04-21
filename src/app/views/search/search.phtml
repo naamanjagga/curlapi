@@ -1,0 +1,55 @@
+<style>
+    .card img {
+        width: 30%;
+    }
+</style>
+
+<div class="container-fluid bg-primary pt-5 pb-5">
+    <form action="" method="POST">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="book" placeholder="Search book">
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit" name="btn">OK</button>
+                <button class="btn btn-danger" type="submit" name="cancel">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <div class="container bg-white mt-5 mb-5 border-rounded">
+
+
+        <?php
+        $i = 0;
+        foreach ($array as $key => $value) {
+        ?>
+            <div class="card mt-3 bg-muted" style="width: 70rem; flex-direction: row;">
+                <img src="<?php echo 'https://covers.openlibrary.org/b/id/' . $value['cover_i'] . '-L.jpg'; ?>" class="card-img-top" alt="..." height="250">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <a href="detail?id=<?php echo $value['isbn'][0]; ?>&i=<?php echo $i; ?>&cover=<?php echo $value['cover_i']; ?>&gi=<?php echo $value['id_google'][$i]; ?>">
+                                <h5 class="card-title"><?php echo $value['title']; ?></h5>
+                            </a>
+                            <p class="card-text">by : <?php
+                                                        if ($value['author_name'] != null) {
+                                                            foreach ($value['author_name'] as $k => $v) {
+                                                                echo $v;
+                                                                echo ' ,';
+                                                            }
+                                                        }
+                                                        ?> </p>
+                            <p class="card-text text-muted"><small>first published in : <?php echo $value['publish_date'][0]; ?></small> </p>
+                            <a class="card-text text-primary decoration-none"><small><?php echo $value['edition_count']; ?> edition </small></a><a><small class="text-muted"> in <?php echo count($value['language']); ?> languages</small> </a>
+                        </div>
+                        <div class="col-lg-4 mt-5">
+                            <a href="#" class="btn btn-primary  mt-3 px-5">Read</a><br>
+                            <a href="#" class="btn btn-danger  mt-1 px-5">Borrow</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+            $i++;
+        }
+        ?>
+    </div>
+</div>
